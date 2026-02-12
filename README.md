@@ -1,4 +1,4 @@
-Trajis SmartSRT (Portable, Offline Models)
+## Trajis SmartSRT (Portable, Offline Models)
 
 Trajis SmartSRT runs a local subtitle translation pipeline using llama-cpp-python. It is designed to be portable: all dependencies live inside this folder. It first builds an English, language-neutral translation brief (optionally assisted by audio/visual/context signals), then generates the final subtitles and enforces a glossary at the output—delivering more consistent, controllable results than one-shot translation.
 
