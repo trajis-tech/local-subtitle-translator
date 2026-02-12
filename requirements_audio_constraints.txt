@@ -1,0 +1,3 @@
+# Optional constraints file (Run A uses HF Wav2Vec2; no SpeechBrain).
+# Normal install: pip install -r requirements_base.txt
+# To use this file: pip install -c requirements_audio_constraints.txt -r requirements_base.txt

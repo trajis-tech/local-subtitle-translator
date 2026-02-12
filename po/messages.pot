@@ -1,0 +1,200 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: local-subtitle-translator 1.0\n"
+"POT-Creation-Date: 2026-01-27 12:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+# Main app title / window title
+msgid "Local Subtitle Translator (Vision + Reason)"
+msgstr ""
+
+# Hero description (generic vision, not Moondream2-only)
+msgid "No Ollama needed. Runs with llama-cpp-python (GGUF) + optional local vision (GGUF vision model)."
+msgstr ""
+
+# Translate tab labels
+msgid "Video (MKV/MP4) — required for audio and vision analysis"
+msgstr ""
+
+msgid "Run mode"
+msgstr ""
+
+msgid "all = A→E; A = Audio; B = Brief v1; C = single-frame vision → brief v2; D = multi-frame vision → brief v3; E = Translate"
+msgstr ""
+
+msgid "all = A→B→(C/D)→E→F; E = context expansion; F = Translate"
+msgstr ""
+
+msgid "Run E scheme (when to use main vs. localization model)"
+msgstr ""
+
+msgid "Run F scheme (when to use main vs. localization model)"
+msgstr ""
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run E."
+msgstr ""
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run F."
+msgstr ""
+
+msgid "Enable context expansion fallback (Run E, need_more_context)"
+msgstr ""
+
+# Run E (context expansion) progress
+msgid "Run E: Context expansion..."
+msgstr ""
+
+msgid "Run E: Context expansion"
+msgstr ""
+
+msgid "Run E: Completed"
+msgstr ""
+
+# Run F (final translation) progress
+msgid "Run F: Loading translation model (localization)..."
+msgstr ""
+
+msgid "Run F: Loading translation model (localization)"
+msgstr ""
+
+msgid "Run F: Loading translation model / processing... (see log)"
+msgstr ""
+
+msgid "Run F: Translation model loaded, processing with parallel batch inference..."
+msgstr ""
+
+msgid "Run F: Reloading translation model (localization)..."
+msgstr ""
+
+msgid "Run F: Reloading / processing... (see log)"
+msgstr ""
+
+msgid "Run F: Translation model reloaded, processing with parallel batch inference..."
+msgstr ""
+
+msgid "Run F: Completed"
+msgstr ""
+
+msgid "Translation not executed (Run F not selected)."
+msgstr ""
+
+msgid "Full (both strong)"
+msgstr ""
+
+msgid "MAIN-led (main strong, local weak)"
+msgstr ""
+
+msgid "LOCAL-led (local strong, main weak)"
+msgstr ""
+
+msgid "Draft-first (both weak)"
+msgstr ""
+
+msgid "Target language (locale code)"
+msgstr ""
+
+msgid "Target language"
+msgstr ""
+
+msgid "SRT (English)"
+msgstr ""
+
+msgid "SRT encoding"
+msgstr ""
+
+msgid "Enable vision fallback (Run C/D, local GGUF vision model)"
+msgstr ""
+
+msgid "Run D threshold (multi-frame vision if confidence <)"
+msgstr ""
+
+msgid "Run C threshold (single-frame vision if confidence <)"
+msgstr ""
+
+msgid "Max frames per subtitle (Run D)"
+msgstr ""
+
+msgid "Frame offsets within subtitle span (comma-separated, 0..1)"
+msgstr ""
+
+msgid "e.g. 0.3,0.7"
+msgstr ""
+
+msgid "configured in language_config.json"
+msgstr ""
+
+msgid "🚀 Translate"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Idle. Ready for new translation."
+msgstr ""
+
+msgid "Download translated SRT"
+msgstr ""
+
+msgid "Status (EN)"
+msgstr ""
+
+msgid "Idle."
+msgstr ""
+
+msgid "Preview frame (when vision runs)"
+msgstr ""
+
+msgid "Log (last 200 lines)"
+msgstr ""
+
+# Tab labels
+msgid "Translate"
+msgstr ""
+
+msgid "Glossary"
+msgstr ""
+
+msgid "Setup / Model Paths"
+msgstr ""
+
+# Glossary tab
+msgid "### Glossary / Replace Library\n- Edit in-table\n- Import CSV (2 columns: English, {target_lang})\n- Import Subtitle Edit `.template` (best-effort XML extraction)\n"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Traditional Chinese"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Import CSV"
+msgstr ""
+
+msgid "Import Subtitle Edit .template"
+msgstr ""
+
+msgid "Glossary status"
+msgstr ""
+
+# Setup / Model Paths tab
+msgid "### config.json\nEdit `config.json` to point to your GGUF model files under `./models/`.\n\nIf missing, the Translate tab will show a clear error.\n"
+msgstr ""
+
+msgid "Write to config.json"
+msgstr ""
+

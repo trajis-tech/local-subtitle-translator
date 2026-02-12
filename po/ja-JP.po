@@ -1,0 +1,393 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: local-subtitle-translator 1.0\n"
+"Language: ja-JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# UI translations for Japanese
+
+msgid "Local Subtitle Translator (Vision + Reason)"
+msgstr "ローカル字幕翻訳ツール（ビジョン＋意味解析）"
+
+msgid "# 🎬 Local Subtitle Translator (EN → target language)\nNo Ollama needed. Runs with llama-cpp-python (GGUF) + optional local vision via Moondream2.\n"
+msgstr "# 🎬 ローカル字幕翻訳ツール（英語 → 目的言語）\nOllama は不要です。ローカルの llama-cpp-python（GGUF）と、必要に応じてローカルのビジョンモデル Moondream2 を使用します。\n"
+
+msgid "No Ollama needed. Runs with llama-cpp-python (GGUF) + optional local vision (GGUF vision model)."
+msgstr "Ollama は不要です。ローカルの llama-cpp-python（GGUF）と、必要に応じてローカルの GGUF ビジョンモデルを使用します。"
+
+msgid "Video (MKV/MP4) — required for audio and vision analysis"
+msgstr "動画（MKV／MP4）— 音声と視覚分析に必要"
+
+msgid "SRT (English)"
+msgstr "SRT（英語）"
+
+msgid "SRT encoding"
+msgstr "SRT の文字コード"
+
+msgid "Enable vision fallback (Moondream2)"
+msgstr "ビジョン補助（Moondream2）を有効にする"
+
+msgid "Enable vision fallback (Run C/D, local GGUF vision model)"
+msgstr "ビジョン補助を有効にする（Run C/D、ローカル GGUF 視覚モデル）"
+
+msgid "Max frames per subtitle (Run D)"
+msgstr "1行あたりの最大フレーム数（Run D 複数フレーム）"
+
+msgid "Frame offsets within subtitle span (comma-separated, 0..1)"
+msgstr "字幕の時間範囲内でのフレーム位置（0〜1、カンマ区切り）"
+
+msgid "e.g. 0.3,0.7"
+msgstr "例：0.3,0.7"
+
+msgid "🚀 Translate"
+msgstr "🚀 翻訳開始"
+
+msgid "Reset"
+msgstr "リセット"
+
+msgid "Idle. Ready for new translation."
+msgstr "待機中。新しい翻訳を開始できます。"
+
+msgid "Download translated SRT"
+msgstr "翻訳済み SRT をダウンロード"
+
+msgid "Status (EN)"
+msgstr "ステータス（英語）"
+
+msgid "Latest log"
+msgstr "最新ログ"
+
+msgid "Preview frame (when vision runs)"
+msgstr "プレビュー用フレーム（ビジョン実行時）"
+
+msgid "Log (last 200 lines)"
+msgstr "ログ（最新 200 行）"
+
+#: tab labels
+msgid "Translate"
+msgstr "翻訳"
+
+msgid "Glossary"
+msgstr "用語集"
+
+msgid "Setup / Model Paths"
+msgstr "設定／モデルパス"
+
+msgid "### Glossary / Replace Library\n- Edit in-table\n- Import CSV (2 columns: English, {target_lang})\n- Import Subtitle Edit `.template` (best-effort XML extraction)\n"
+msgstr "### 用語集／置換ライブラリ\n- テーブル上で直接編集\n- CSV をインポート（2列：English, {target_lang}）\n- Subtitle Edit の `.template` をインポート（可能な限り XML から抽出）\n"
+
+msgid "English"
+msgstr "英語"
+
+msgid "Traditional Chinese"
+msgstr "繁体字中国語"
+
+msgid "Note"
+msgstr "メモ"
+
+msgid "Enabled"
+msgstr "有効"
+
+msgid "Load"
+msgstr "読み込み"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Import CSV"
+msgstr "CSV をインポート"
+
+msgid "Import Subtitle Edit .template"
+msgstr "Subtitle Edit .template をインポート"
+
+msgid "Glossary status"
+msgstr "用語集ステータス"
+
+msgid "### config.json\nEdit `config.json` to point to your GGUF model files under `./models/`.\n\nIf missing, the Translate tab will show a clear error.\n"
+msgstr "### config.json\n`./models/` 配下の GGUF モデルファイルを指すように `config.json` を編集してください。\n\n設定がない場合、［Translate］タブにエラーが表示されます。\n"
+
+msgid "Write to config.json"
+msgstr "`config.json` に書き込む"
+
+msgid "Run mode"
+msgstr "実行モード"
+
+msgid "all = A→E; A = Audio; B = Brief v1; C = single-frame vision → brief v2; D = multi-frame vision → brief v3; E = Translate"
+msgstr "all = A→E；A = 音声；B = Brief v1；C = 単一フレーム視覚 → brief v2；D = 複数フレーム視覚 → brief v3；E = 翻訳"
+
+msgid "Run E scheme (when to use main vs. localization model)"
+msgstr "Run E スキーム（選択タイミング：メインモデル／ローカル化モデル 強または弱）"
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run E."
+msgstr "Full=両強 | MAIN-led=主強地弱 | LOCAL-led=地強主弱 | Draft-first=両弱。詳細は README の Run E スキームを参照。"
+
+msgid "all = A→B→(C/D)→E→F; E = context expansion; F = Translate"
+msgstr "all = A→B→(C/D)→E→F；E = コンテキスト拡張；F = 翻訳"
+
+msgid "Run F scheme (when to use main vs. localization model)"
+msgstr "Run F スキーム（選択タイミング：メインモデル／ローカル化モデル 強または弱）"
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run F."
+msgstr "Full=両強 | MAIN-led=主強地弱 | LOCAL-led=地強主弱 | Draft-first=両弱。詳細は README の Run F スキームを参照。"
+
+msgid "Enable context expansion fallback (Run E, need_more_context)"
+msgstr "コンテキスト拡張フォールバックを有効にする（Run E、need_more_context）"
+
+msgid "Full (both strong)"
+msgstr "Full（主強＋地強）"
+
+msgid "MAIN-led (main strong, local weak)"
+msgstr "MAIN-led（主強地弱）"
+
+msgid "LOCAL-led (local strong, main weak)"
+msgstr "LOCAL-led（地強主弱）"
+
+msgid "Draft-first (both weak)"
+msgstr "Draft-first（両弱）"
+
+msgid "Target language (locale code)"
+msgstr "目標言語（ロケールコード）"
+
+msgid "Target language"
+msgstr "目標言語"
+
+msgid "configured in language_config.json"
+msgstr "language_config.json で設定"
+
+msgid "Idle."
+msgstr "待機中。"
+
+msgid "Error: {error}"
+msgstr "エラー：{error}"
+
+msgid "Please upload an SRT file."
+msgstr "SRT ファイルをアップロードしてください。"
+
+msgid "Missing model files. Please follow the README to download GGUF models into ./models\n\n"
+msgstr "モデルファイルが不足しています。README に従って GGUF モデルを ./models にダウンロードしてください\n\n"
+
+msgid "Missing models."
+msgstr "モデルが不足しています。"
+
+msgid "SRT has 0 lines."
+msgstr "SRT ファイルに 0 行あります。"
+
+msgid "Parsing subtitles... ({total} lines)"
+msgstr "字幕を解析中...（{total} 行）"
+
+msgid "Run A: Audio analysis..."
+msgstr "実行 A：音声分析中..."
+
+msgid "Run A: Audio analysis"
+msgstr "実行 A：音声分析"
+
+msgid "Run A: Loaded existing results ({count} items)"
+msgstr "実行 A：既存の結果を読み込みました（{count} 項目）"
+
+msgid "Run A: Starting audio analysis..."
+msgstr "実行 A：音声分析を開始..."
+
+msgid "Run A: Processing... (check log for detailed progress)"
+msgstr "実行 A：処理中...（詳細な進捗はログを確認してください）"
+
+msgid "Run A: Completed ({count} items)"
+msgstr "実行 A：完了（{count} 項目）"
+
+msgid "Run A: Error occurred, re-analyzing..."
+msgstr "実行 A：エラーが発生しました。再分析中..."
+
+msgid "Run A: Completed"
+msgstr "実行 A：完了"
+
+msgid "Run B: Loading main reasoning model (Stage 2)..."
+msgstr "実行 B：主要推論モデルを読み込み中（ステージ 2）..."
+
+msgid "Run B: Loading main reasoning model (Stage 2)"
+msgstr "実行 B：主要推論モデルを読み込み中（ステージ 2）"
+
+msgid "Run B: Loading model / processing... (see log)"
+msgstr "実行 B：モデルを読み込み中／処理中...（ログを確認してください）"
+
+msgid "Run B: Model loaded, processing with parallel batch inference..."
+msgstr "実行 B：モデルを読み込みました。並列バッチ推論で処理中..."
+
+msgid "Run B: Reloading main reasoning model (Stage 2)..."
+msgstr "実行 B：主要推論モデルを再読み込み中（ステージ 2）..."
+
+msgid "Run B: Reloading / processing... (see log)"
+msgstr "実行 B：再読み込み中／処理中...（ログを確認してください）"
+
+msgid "Run B: Model reloaded, processing with parallel batch inference..."
+msgstr "実行 B：モデルを再読み込みました。並列バッチ推論で処理中..."
+
+msgid "Run B: Completed"
+msgstr "実行 B：完了"
+
+msgid "Run B: Completed ({count} items)"
+msgstr "実行 B：完了（{count} 項目）"
+
+msgid "Run C: Loading vision model (1-frame) for {count} items..."
+msgstr "実行 C：{count} 項目のビジョンモデルを読み込み中（1フレーム）..."
+
+msgid "Run C: Loading vision model (1-frame)"
+msgstr "実行 C：ビジョンモデルを読み込み中（1フレーム）"
+
+msgid "Run C: Loading vision model (1-frame)..."
+msgstr "実行 C：ビジョンモデルを読み込み中（1フレーム）..."
+
+msgid "Run C: Vision model loaded, analyzing frames..."
+msgstr "実行 C：ビジョンモデルを読み込みました。フレームを分析中..."
+
+msgid "Run C: Reloading vision model (1-frame)..."
+msgstr "実行 C：ビジョンモデルを再読み込み中（1フレーム）..."
+
+msgid "Run C: Vision model reloaded, analyzing frames..."
+msgstr "実行 C：ビジョンモデルを再読み込みました。フレームを分析中..."
+
+msgid "Run C: Regenerating brief v2 with vision..."
+msgstr "実行 C：ビジョンでブリーフ v2 を再生成中..."
+
+msgid "Run C: Reloading main reasoning model for brief v2..."
+msgstr "実行 C：ブリーフ v2 用に主要推論モデルを再読み込み中..."
+
+msgid "Run C: Loading model / brief v2... (see log)"
+msgstr "実行 C：モデルを読み込み中／ブリーフ v2...（ログを確認してください）"
+
+msgid "Run C: Main model reloaded, regenerating brief v2 with parallel batch inference..."
+msgstr "実行 C：主要モデルを再読み込みました。並列バッチ推論でブリーフ v2 を再生成中..."
+
+msgid "Run C: Reloading / brief v2... (see log)"
+msgstr "実行 C：再読み込み中／ブリーフ v2...（ログを確認してください）"
+
+msgid "Run C: Completed"
+msgstr "実行 C：完了"
+
+msgid "Run C: Completed ({count} items)"
+msgstr "実行 C：完了（{count} 項目）"
+
+msgid "Run D: Loading vision model (multi-frame) for {count} items..."
+msgstr "実行 D：{count} 項目のビジョンモデルを読み込み中（マルチフレーム）..."
+
+msgid "Run D: Loading vision model (multi-frame)"
+msgstr "実行 D：ビジョンモデルを読み込み中（マルチフレーム）"
+
+msgid "Run D: Loading vision model (multi-frame)..."
+msgstr "実行 D：ビジョンモデルを読み込み中（マルチフレーム）..."
+
+msgid "Run D: Vision model loaded, analyzing multiple frames..."
+msgstr "実行 D：ビジョンモデルを読み込みました。複数のフレームを分析中..."
+
+msgid "Run D: Reloading vision model (multi-frame)..."
+msgstr "実行 D：ビジョンモデルを再読み込み中（マルチフレーム）..."
+
+msgid "Run D: Vision model reloaded, analyzing multiple frames..."
+msgstr "実行 D：ビジョンモデルを再読み込みました。複数のフレームを分析中..."
+
+msgid "Run D: Regenerating brief v3 with multi-frame vision..."
+msgstr "実行 D：マルチフレームビジョンでブリーフ v3 を再生成中..."
+
+msgid "Run D: Reloading main reasoning model for brief v3..."
+msgstr "実行 D：ブリーフ v3 用に主要推論モデルを再読み込み中..."
+
+msgid "Run D: Loading model / brief v3... (see log)"
+msgstr "実行 D：モデルを読み込み中／ブリーフ v3...（ログを確認してください）"
+
+msgid "Run D: Main model reloaded, regenerating brief v3 with parallel batch inference..."
+msgstr "実行 D：主要モデルを再読み込みました。並列バッチ推論でブリーフ v3 を再生成中..."
+
+msgid "Run D: Reloading / brief v3... (see log)"
+msgstr "実行 D：再読み込み中／ブリーフ v3...（ログを確認してください）"
+
+msgid "Run D: Completed"
+msgstr "実行 D：完了"
+
+msgid "Run D: Completed ({count} items)"
+msgstr "実行 D：完了（{count} 項目）"
+
+msgid "Run E: Context expansion..."
+msgstr "実行 E：コンテキスト拡張..."
+
+msgid "Run E: Context expansion"
+msgstr "実行 E：コンテキスト拡張"
+
+msgid "Run E: Completed"
+msgstr "実行 E：完了"
+
+msgid "Run F: Loading translation model (localization)..."
+msgstr "実行 F：翻訳モデルを読み込み中（ローカライゼーション）..."
+
+msgid "Run F: Loading translation model (localization)"
+msgstr "実行 F：翻訳モデルを読み込み中（ローカライゼーション）"
+
+msgid "Run F: Loading translation model / processing... (see log)"
+msgstr "実行 F：翻訳モデル読み込み／処理中...（ログ参照）"
+
+msgid "Run F: Translation model loaded, processing with parallel batch inference..."
+msgstr "実行 F：翻訳モデル読み込み済み、並列バッチ推論で処理中..."
+
+msgid "Run F: Reloading translation model (localization)..."
+msgstr "実行 F：翻訳モデルを再読み込み中（ローカライゼーション）..."
+
+msgid "Run F: Reloading / processing... (see log)"
+msgstr "実行 F：再読み込み／処理中...（ログ参照）"
+
+msgid "Run F: Translation model reloaded, processing with parallel batch inference..."
+msgstr "実行 F：翻訳モデル再読み込み済み、並列バッチ推論で処理中..."
+
+msgid "Run F: Completed"
+msgstr "実行 F：完了"
+
+msgid "Translation not executed (Run F not selected)."
+msgstr "翻訳は実行されませんでした（実行 F が未選択）。"
+
+msgid "Run E: Loading translation model (localization)..."
+msgstr "実行 E：翻訳モデルを読み込み中（ローカライゼーション）..."
+
+msgid "Run E: Loading translation model (localization)"
+msgstr "実行 E：翻訳モデルを読み込み中（ローカライゼーション）"
+
+msgid "Run E: Loading translation model / processing... (see log)"
+msgstr "実行 E：翻訳モデルを読み込み中／処理中...（ログを確認してください）"
+
+msgid "Run E: Translation model loaded, processing with parallel batch inference..."
+msgstr "実行 E：翻訳モデルを読み込みました。並列バッチ推論で処理中..."
+
+msgid "Run E: Reloading translation model (localization)..."
+msgstr "実行 E：翻訳モデルを再読み込み中（ローカライゼーション）..."
+
+msgid "Run E: Reloading / processing... (see log)"
+msgstr "実行 E：再読み込み中／処理中...（ログを確認してください）"
+
+msgid "Run E: Translation model reloaded, processing with parallel batch inference..."
+msgstr "実行 E：翻訳モデルを再読み込みました。並列バッチ推論で処理中..."
+
+msgid "Run E: Completed"
+msgstr "実行 E：完了"
+
+msgid "All runs completed!"
+msgstr "すべての実行が完了しました！"
+
+msgid "Translation not executed (Run E not selected)."
+msgstr "翻訳が実行されませんでした（実行 E が選択されていません）。"
+
+msgid "Loaded {count} entries from {path}"
+msgstr "{path} から {count} エントリを読み込みました"
+
+msgid "Saved {count} entries to {path}"
+msgstr "{path} に {count} エントリを保存しました"
+
+msgid "Imported {new_count} from CSV. Total {total_count}."
+msgstr "CSV から {new_count} をインポートしました。合計 {total_count}。"
+
+msgid "Imported {new_count} from .template (best-effort). Total {total_count}."
+msgstr ".template から {new_count} をインポートしました（ベストエフォート）。合計 {total_count}。"
+
+msgid "Saved config.json"
+msgstr "config.json を保存しました"
+
+msgid "Failed: {error}"
+msgstr "失敗：{error}"
+
+

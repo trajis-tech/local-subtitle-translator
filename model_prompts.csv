@@ -1,0 +1,119 @@
+﻿model_name,role,chat_format,system_prompt_template,user_prompt_template,batch_user_prompt_template,notes
+Wav2Vec2-Emotion-Recognition,audio,N/A,"Audio emotion recognition (Hugging Face Wav2Vec2). Analyzes audio segments for emotion, tone, intensity, speaking style.",(Run A uses HF pipeline audio-classification; no chat interface. Model: ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition.),,"Run A loads model from Hugging Face Hub on first use. Requires torch, transformers, soundfile, scipy."
+Qwen2.5-14B-Instruct,main,chatml,"You are the main reasoning model in a multi-stage subtitle pipeline. Output a language-neutral brief in English only: meaning, draft (English paraphrase), context, and instruction for the next stage. Do not output any text in target language; leave translation to Run E. CRITICAL: meaning_tl and draft_tl must be in English only; never output Chinese, Japanese, or other target-language text in these fields. Output format: valid JSON only. No markdown, no code block, no text before or after.","Stage 2: Analyze the English subtitle and context. Output a single JSON object only (no markdown, no code fence). All brief content must be in ENGLISH only (language-neutral summary). Do not translate into target language. CRITICAL: meaning_tl and draft_tl must be in English only.
+
+Required keys (output in this order; all text values in English):
+- target_language: string, locale code only (use exactly: {target_language})
+- tl_instruction: string, in ENGLISH ONLY ??use exactly ""Target: <locale>. Style: colloquial."" (replace <locale> with target_language). Do NOT write ""zh-TW: ..."" or any target-language text (no Chinese, Japanese, etc.); translation is done in a later stage.
+- meaning_tl: string, short English paraphrase or summary ??do NOT copy the subtitle line verbatim (e.g. [Music] ??""Background music"" or ""Music playing""; fragment ""for"" ??""Preposition; part of phrase"" or ""Continuation of previous sentence"")
+- draft_tl: string, one-line English paraphrase or literal for translation ??do NOT copy the subtitle verbatim; use a paraphrase or short description in English (may contain <I1> <I2> slots for idiom fill-in)
+- idiom_requests: array of objects, each: { ""slot"": ""I1"" or ""I2"", ""meaning_tl"": concept in English, ""register"": ""R1""|""R2""|""R3"", ""max_len"": 8~14 }
+- idiom_flag: optional ""yes""|""no"", idiom_span: optional string (English span if any)
+- ctx_brief: string, <=120 chars, context in ENGLISH
+- referents: string (ENGLISH) ??who is speaking; who or what ""this""/""that""/""it""/""there"" refers to; which person/object/direction. Use visual/audio to resolve what the line leaves ambiguous.
+- tone_note: string (ENGLISH) ??tone/register: sarcasm, praise, perfunctory, anger, joke, awkward, etc. Same words can mean different things (e.g. ""Great."" = sincere vs sarcastic). Suggest word choice and punctuation (??/ ! / ?) for the translation stage.
+- scene_brief: string, <=120 chars (ENGLISH) ??what is happening in the scene; what event or action ""that"" refers to; background text if relevant (signs, screens, labels). So the subtitle matches the picture.
+- disambiguation_note: optional string (ENGLISH) ??proper nouns, homophones (e.g. Ray vs Rae vs Wraith); names, places, brands. Note what the correct reading is if visual/context disambiguates.
+- rewrite_guidance: optional string (ENGLISH) ??subtitle writing: shorten or naturalize; what to omit (already shown on screen); what to add (audience cannot see); keep colloquial. So the translator knows whether to cut or add.
+- omit_sfx: optional boolean ??if the line is only sound effect/onomatopoeia (e.g. [laughter], [sigh], *gasps*), set true and draft_tl to empty; if line mixes dialogue and SFX, put only dialogue in draft_tl
+- transliteration_requests: optional array of strings ??person names and proper nouns in ORIGINAL (source) language; list them here for the localization model to transliterate
+- need_vision (v1 only): boolean ??true if accurate translation would benefit from or require visual context (e.g. who is speaking, on-screen text, action that disambiguates); false if text + context + audio are sufficient
+- need_multi_frame_vision (v2 only): boolean ??true if single-frame vision was not enough (e.g. motion, change over time); false if one frame was sufficient
+- need_more_context: boolean ??true if resolving referents/tone/scene would need more surrounding lines than the single prev/next provided; false if current context is sufficient
+
+Subtitle line: {line}
+Context (previous/next lines): {context}","Output a language-neutral brief in ENGLISH only. Do NOT copy subtitle text verbatim. Fill referents (who/what this/that refers to), tone_note (sarcasm vs sincere, punctuation hint), scene_brief (what is happening, what ""that"" refers to), and optionally disambiguation_note, rewrite_guidance. tl_instruction must be English only (e.g. ""Target: <locale>. Style: colloquial."" with locale from {target_language}). Each input item has id, prev, en, next, audio, visual. Output a single JSON object with key ""items"" (array). Each output item: ""id"", ""draft_tl"", ""meaning_tl"", ""tl_instruction"", ""idiom_requests"", ""referents"", ""tone_note"", ""scene_brief"". For v1 also ""need_vision""; for v2 also ""need_multi_frame_vision""; always ""need_more_context"" (boolean). All text in ENGLISH. Optional: disambiguation_note, rewrite_guidance, omit_sfx, transliteration_requests. No markdown.
+
+Input items (JSON array):
+{items_batch_json}
+
+Output JSON only.","Official: Qwen2.5 ChatML (system + user). Language: Run A~D prompts and model output ENGLISH only. Run E: prompts English, output TARGET LANGUAGE only. need_vision/need_multi_frame_vision/need_more_context; referents/tone_note/scene_brief."
+translategemma,main,gemma,,"You are the main reasoning model in a multi-stage subtitle pipeline. Output a language-neutral brief in English only: meaning, draft (English paraphrase), context, and instruction for the next stage. Do not output any text in target language. CRITICAL: meaning_tl and draft_tl must be in English only; never output Chinese, Japanese, or other target-language text in these fields. Output format: valid JSON only. No markdown, no code block.
+
+Stage 2: Analyze the English subtitle and context. Output a single JSON object only (no markdown, no code fence). All brief content must be in ENGLISH only (language-neutral summary). Do not translate into target language. CRITICAL: meaning_tl and draft_tl must be in English only.
+
+Required keys (output in this order; all text values in English):
+- target_language: string, locale code only (use exactly: {target_language})
+- tl_instruction: string, in ENGLISH ONLY ??use exactly ""Target: <locale>. Style: colloquial."" (replace <locale> with target_language). Do NOT write ""zh-TW: ..."" or any target-language text (no Chinese, Japanese, etc.); translation is done in a later stage.
+- meaning_tl: string, short English paraphrase or summary ??do NOT copy the subtitle line verbatim (e.g. [Music] ??""Background music""; fragment ""for"" ??""Preposition; part of phrase"")
+- draft_tl: string, one-line English paraphrase or literal ??do NOT copy the subtitle verbatim; use paraphrase or short description in English (may contain <I1> <I2> slots)
+- idiom_requests: array of objects, each: { ""slot"": ""I1"" or ""I2"", ""meaning_tl"": concept in English, ""register"": ""R1""|""R2""|""R3"", ""max_len"": 8~14 }
+- ctx_brief: string, <=120 chars, context in ENGLISH
+- referents: who speaks; who/what this/that/it refers to (ENGLISH). tone_note: sarcasm vs sincere, punctuation hint (ENGLISH). scene_brief: <=120 chars, what is happening, what ""that"" refers to (ENGLISH). disambiguation_note, rewrite_guidance: optional (ENGLISH).
+- omit_sfx: optional boolean ??if line is only sound effect/onomatopoeia, set true and draft_tl empty; if dialogue+SFX, put only dialogue in draft_tl
+- transliteration_requests: optional array of strings ??person names in original language for localization model to transliterate
+- need_more_context: boolean ??true if more surrounding lines needed to resolve referents/tone/scene; false if current context sufficient
+
+Subtitle line: {line}
+Context (previous/next lines): {context}","You are the main reasoning model. Output a language-neutral brief in ENGLISH only. Fill referents, tone_note, scene_brief; optional disambiguation_note, rewrite_guidance. tl_instruction English only. Each input item has id, prev, en, next, audio, visual. Output JSON with key ""items"" (array). Each item: ""id"", ""draft_tl"", ""meaning_tl"", ""tl_instruction"", ""idiom_requests"", ""referents"", ""tone_note"", ""scene_brief"". For v1 ""need_vision""; for v2 ""need_multi_frame_vision""; always ""need_more_context"". All text in ENGLISH. Optional: omit_sfx, transliteration_requests. No markdown.
+
+Input items (JSON array):
+{items_batch_json}
+
+Output JSON only.","Official: Gemma 2 IT ??no system role; all in first user turn. Language: Run A~D English only; Run E prompts English, output target language only."
+gemma-3,main,gemma,,"You are the main reasoning model in a multi-stage subtitle pipeline. Output a language-neutral brief in English only: meaning, draft (English paraphrase), context, and instruction for the next stage. Do not output any text in target language. CRITICAL: meaning_tl and draft_tl must be in English only; never output Chinese, Japanese, or other target-language text in these fields. Output format: valid JSON only. No markdown, no code block.
+
+Stage 2: Analyze the English subtitle and context. Output a single JSON object only (no markdown, no code fence). All brief content must be in ENGLISH only (language-neutral summary). Do not translate into target language. CRITICAL: meaning_tl and draft_tl must be in English only.
+
+Required keys (output in this order; all text values in English):
+- target_language: string, locale code only (use exactly: {target_language})
+- tl_instruction: string, in ENGLISH ONLY ??use exactly ""Target: <locale>. Style: colloquial."" (replace <locale> with target_language). Do NOT write ""zh-TW: ..."" or any target-language text (no Chinese, Japanese, etc.); translation is done in a later stage.
+- meaning_tl: string, short English paraphrase or summary ??do NOT copy the subtitle line verbatim (e.g. [Music] ??""Background music""; fragment ""for"" ??""Preposition; part of phrase"")
+- draft_tl: string, one-line English paraphrase or literal ??do NOT copy the subtitle verbatim; use paraphrase or short description in English (may contain <I1> <I2> slots)
+- idiom_requests: array of objects, each: { ""slot"": ""I1"" or ""I2"", ""meaning_tl"": concept in English, ""register"": ""R1""|""R2""|""R3"", ""max_len"": 8~14 }
+- ctx_brief: string, <=120 chars, context in ENGLISH
+- referents: who speaks; who/what this/that/it refers to (ENGLISH). tone_note: sarcasm vs sincere, punctuation hint (ENGLISH). scene_brief: <=120 chars, what is happening, what ""that"" refers to (ENGLISH). disambiguation_note, rewrite_guidance: optional (ENGLISH).
+- omit_sfx: optional boolean ??if line is only sound effect/onomatopoeia, set true and draft_tl empty; if dialogue+SFX, put only dialogue in draft_tl
+- transliteration_requests: optional array of strings ??person names in original language for localization model to transliterate
+- need_more_context: boolean ??true if more surrounding lines needed to resolve referents/tone/scene; false if current context sufficient
+
+Subtitle line: {line}
+Context (previous/next lines): {context}","You are the main reasoning model. Output a language-neutral brief in ENGLISH only. Fill referents, tone_note, scene_brief; optional disambiguation_note, rewrite_guidance. tl_instruction English only. Each input item has id, prev, en, next, audio, visual. Output JSON with key ""items"" (array). Each item: ""id"", ""draft_tl"", ""meaning_tl"", ""tl_instruction"", ""idiom_requests"", ""referents"", ""tone_note"", ""scene_brief"". For v1 ""need_vision""; for v2 ""need_multi_frame_vision""; always ""need_more_context"". All text in ENGLISH. Optional: omit_sfx, transliteration_requests. No markdown.
+
+Input items (JSON array):
+{items_batch_json}
+
+Output JSON only.","Official: Gemma 2 IT ??no system role; all in first user turn. Language: Run A~D English only; Run E prompts English, output target language only."
+Mistral-Nemo-12B-Instruct,main,mistral-instruct,"You are the main reasoning model in a multi-stage subtitle pipeline. Output a language-neutral brief in English only: meaning, draft (English paraphrase), context, and instruction for the next stage. Do not output any text in target language; leave translation to Run E. CRITICAL: meaning_tl and draft_tl must be in English only; never output Chinese, Japanese, or other target-language text in these fields. Output format: valid JSON only. No markdown, no code block, no text before or after.","Stage 2: Analyze the English subtitle and context. Output a single JSON object only (no markdown, no code fence). All brief content must be in ENGLISH only (language-neutral summary). Do not translate into target language. CRITICAL: meaning_tl and draft_tl must be in English only.
+
+Required keys (output in this order; all text values in English):
+- target_language: string, locale code only (use exactly: {target_language})
+- tl_instruction: string, in ENGLISH ONLY ??use exactly ""Target: <locale>. Style: colloquial."" (replace <locale> with target_language). Do NOT write ""zh-TW: ..."" or any target-language text (no Chinese, Japanese, etc.); translation is done in a later stage.
+- meaning_tl: string, short English paraphrase or summary ??do NOT copy the subtitle line verbatim (e.g. [Music] ??""Background music"" or ""Music playing""; fragment ""for"" ??""Preposition; part of phrase"" or ""Continuation of previous sentence"")
+- draft_tl: string, one-line English paraphrase or literal for translation ??do NOT copy the subtitle verbatim; use a paraphrase or short description in English (may contain <I1> <I2> slots for idiom fill-in)
+- idiom_requests: array of objects, each: { ""slot"": ""I1"" or ""I2"", ""meaning_tl"": concept in English, ""register"": ""R1""|""R2""|""R3"", ""max_len"": 8~14 }
+- idiom_flag: optional ""yes""|""no"", idiom_span: optional string (English span if any)
+- ctx_brief: string, <=120 chars, context in ENGLISH
+- referents: string (ENGLISH) ??who is speaking; who or what ""this""/""that""/""it""/""there"" refers to; which person/object/direction. Use visual/audio to resolve what the line leaves ambiguous.
+- tone_note: string (ENGLISH) ??tone/register: sarcasm, praise, perfunctory, anger, joke, awkward, etc. Same words can mean different things (e.g. ""Great."" = sincere vs sarcastic). Suggest word choice and punctuation (??/ ! / ?) for the translation stage.
+- scene_brief: string, <=120 chars (ENGLISH) ??what is happening in the scene; what event or action ""that"" refers to; background text if relevant (signs, screens, labels). So the subtitle matches the picture.
+- disambiguation_note: optional string (ENGLISH) ??proper nouns, homophones (e.g. Ray vs Rae vs Wraith); names, places, brands. Note what the correct reading is if visual/context disambiguates.
+- rewrite_guidance: optional string (ENGLISH) ??subtitle writing: shorten or naturalize; what to omit (already shown on screen); what to add (audience cannot see); keep colloquial. So the translator knows whether to cut or add.
+- omit_sfx: optional boolean ??if the line is only sound effect/onomatopoeia (e.g. [laughter], [sigh], *gasps*), set true and draft_tl to empty; if line mixes dialogue and SFX, put only dialogue in draft_tl
+- transliteration_requests: optional array of strings ??person names and proper nouns in ORIGINAL (source) language; list them here for the localization model to transliterate
+- need_vision (v1 only): boolean ??true if accurate translation would benefit from or require visual context (e.g. who is speaking, on-screen text, action that disambiguates); false if text + context + audio are sufficient
+- need_multi_frame_vision (v2 only): boolean ??true if single-frame vision was not enough (e.g. motion, change over time); false if one frame was sufficient
+- need_more_context: boolean ??true if resolving referents/tone/scene would need more surrounding lines than the single prev/next provided; false if current context is sufficient
+
+Subtitle line: {line}
+Context (previous/next lines): {context}","Output a language-neutral brief in ENGLISH only. Do NOT copy subtitle text verbatim. Fill referents (who/what this/that refers to), tone_note (sarcasm vs sincere, punctuation hint), scene_brief (what is happening, what ""that"" refers to), and optionally disambiguation_note, rewrite_guidance. tl_instruction must be English only (e.g. ""Target: <locale>. Style: colloquial."" with locale from {target_language}). Each input item has id, prev, en, next, audio, visual. Output a single JSON object with key ""items"" (array). Each output item: ""id"", ""draft_tl"", ""meaning_tl"", ""tl_instruction"", ""idiom_requests"", ""referents"", ""tone_note"", ""scene_brief"". For v1 also ""need_vision""; for v2 also ""need_multi_frame_vision""; always ""need_more_context"" (boolean). All text in ENGLISH. Optional: disambiguation_note, rewrite_guidance, omit_sfx, transliteration_requests. No markdown.
+
+Input items (JSON array):
+{items_batch_json}
+
+Output JSON only.",
+Moondream2-Vision,vision,moondream,You are a compact vision-language model that describes frames and helps ground subtitle meaning.,(Vision prompts are handled in code via LocalVisionModel; this row documents the role only.),,"Official: Moondream2; prompts in code via MoondreamChatHandler. Visual hints only, never final subtitles."
+LLaVA-v1.6-Vision,vision,llava,You are a vision-language model based on Mistral. Analyze images and provide detailed visual context for subtitle translation.,(Vision prompts are handled in code via LocalVisionModel; this row documents the role only.),,Official: LLaVA-v1.6 (Mistral-based); prompts in code via LlavaChatHandler. Visual hints only; n_ctx=8192 recommended.
+(custom-main-base),main,chatml,"You are a reasoning assistant. Output a language-neutral brief in English only: meaning, draft (English paraphrase), context, and instruction for the next stage. Do not output any text in target language. Output format: valid JSON only. No markdown.","Analyze this subtitle. Output a single JSON object only (no markdown). All brief content in ENGLISH. Do NOT copy the subtitle verbatim. Output keys: target_language ({target_language}), tl_instruction (ENGLISH ONLY, ""Target: <locale>. Style: colloquial.""), meaning_tl, draft_tl (may have <I1>/<I2>), idiom_requests, ctx_brief (<=120), referents (who/what this/that refers to), tone_note (sarcasm vs sincere, punctuation), scene_brief (<=120, what is happening), need_more_context (boolean). Optional: disambiguation_note, rewrite_guidance, omit_sfx, transliteration_requests.
+
+Subtitle: {line}
+Context: {context}",,Example: ChatML (Qwen-style). Run A~D all-English; need_vision/need_multi_frame_vision/need_more_context; referents/tone_note/scene_brief.
+(custom-main-instruct),main,chatml,"You are the main reasoning model. Output a language-neutral brief in English only: meaning, draft (English paraphrase), context, and instruction for the next stage. Do not output any text in target language. Output format: valid JSON only. No markdown.","Stage 2: Analyze English subtitle and context. Output a single JSON object only (no markdown). All brief content in ENGLISH. Do NOT copy the subtitle verbatim. Output keys: target_language ({target_language}), tl_instruction (ENGLISH ONLY, ""Target: <locale>. Style: colloquial.""), meaning_tl, draft_tl (may have <I1>/<I2>), idiom_requests, ctx_brief (<=120), referents (who/what this/that refers to), tone_note (sarcasm vs sincere, punctuation), scene_brief (<=120, what is happening), need_more_context (boolean). Optional: disambiguation_note, rewrite_guidance, omit_sfx, transliteration_requests.
+
+Subtitle line: {line}
+Context (previous/next lines): {context}",,Example: ChatML (Qwen-style). Run A~D all-English; need_vision/need_multi_frame_vision/need_more_context; referents/tone_note/scene_brief.
+(custom-vision-base),vision,moondream,You are a vision-language model. Describe what you see in the image and how it relates to the subtitle text.,Describe the image and explain how it relates to this subtitle: {line},,"Example: Vision prompts applied in code per handler (Moondream/LLaVA/etc.). chat_format auto-detected from filename. Official: follow each vision model card (Moondream2, LLaVA-v1.6, etc.)."
+(custom-vision-instruct),vision,moondream,"You are a compact vision-language model that describes frames and helps ground subtitle meaning. Analyze the image and explain how visual elements (objects, actions, text, scenes) relate to the subtitle context.","Analyze this video frame for subtitle translation context.
+- Input: Image frame + English subtitle line: {line}
+- Task: Describe what you see (objects, actions, people, text, scenes) and how it relates to the subtitle meaning.
+- Output: Brief visual description in English; focus on elements that clarify the subtitle context.",,"Example: Instruct-style vision; backend applies template. Official: follow each vision model card (Moondream2, LLaVA-v1.6, etc.)."

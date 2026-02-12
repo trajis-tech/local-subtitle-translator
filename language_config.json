@@ -1,0 +1,12 @@
+{
+  "//": "語言設定檔：可自行修改 ui_locale / target_locale_default / available_target_locales。",
+  "ui_locale": "zh-TW",
+  "target_locale_default": "zh-TW",
+  "available_target_locales": [
+    "zh-TW",
+    "zh-CN",
+    "ja-JP",
+    "es-ES"
+  ]
+}
+

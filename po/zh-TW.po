@@ -1,0 +1,399 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: local-subtitle-translator 1.0\n"
+"Language: zh-TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# UI translations for Traditional Chinese (Taiwan)
+
+#: app title
+msgid "Local Subtitle Translator (Vision + Reason)"
+msgstr "本機字幕翻譯器（影像＋理解）"
+
+#: main hero text (legacy, full block)
+msgid "# 🎬 Local Subtitle Translator (EN → target language)\nNo Ollama needed. Runs with llama-cpp-python (GGUF) + optional local vision via Moondream2.\n"
+msgstr "# 🎬 本機字幕翻譯器（英 → 目標語言）\n不需安裝 Ollama。使用本機的 llama-cpp-python（GGUF），可選擇搭配本地視覺模型 Moondream2。\n"
+
+#: hero description (generic vision)
+msgid "No Ollama needed. Runs with llama-cpp-python (GGUF) + optional local vision (GGUF vision model)."
+msgstr "不需安裝 Ollama。使用本機的 llama-cpp-python（GGUF），可選擇搭配本地 GGUF 視覺模型。"
+
+#: translate tab labels
+msgid "Video (MKV/MP4) — required for audio and vision analysis"
+msgstr "影片（MKV／MP4）— 音訊與視覺分析所需"
+
+msgid "SRT (English)"
+msgstr "SRT（英文）"
+
+msgid "SRT encoding"
+msgstr "SRT 編碼"
+
+msgid "Enable vision fallback (Moondream2)"
+msgstr "啟用視覺備援（Moondream2）"
+
+msgid "Enable vision fallback (Run C/D, local GGUF vision model)"
+msgstr "啟用視覺備援（Run C/D，本機 GGUF 視覺模型）"
+
+msgid "Max frames per subtitle (Run D)"
+msgstr "每行字幕最多擷取影格數（Run D 多幀視覺）"
+
+msgid "Frame offsets within subtitle span (comma-separated, 0..1)"
+msgstr "字幕時間範圍內取樣位置（0..1，以逗號分隔）"
+
+msgid "e.g. 0.3,0.7"
+msgstr "例如：0.3,0.7"
+
+msgid "🚀 Translate"
+msgstr "🚀 開始翻譯"
+
+msgid "Reset"
+msgstr "一鍵重設"
+
+msgid "Idle. Ready for new translation."
+msgstr "閒置中。可開始新的翻譯工作。"
+
+msgid "Download translated SRT"
+msgstr "下載翻譯後的 SRT"
+
+msgid "Status (EN)"
+msgstr "狀態（英文）"
+
+msgid "Latest log"
+msgstr "最新一筆日誌"
+
+msgid "Preview frame (when vision runs)"
+msgstr "預覽影格（啟用視覺時顯示）"
+
+msgid "Log (last 200 lines)"
+msgstr "日誌（最新 200 行）"
+
+#: tab labels
+msgid "Translate"
+msgstr "翻譯"
+
+msgid "Glossary"
+msgstr "術語表"
+
+msgid "Setup / Model Paths"
+msgstr "設定／模型路徑"
+
+#: glossary tab
+msgid "### Glossary / Replace Library\n- Edit in-table\n- Import CSV (2 columns: English, {target_lang})\n- Import Subtitle Edit `.template` (best-effort XML extraction)\n"
+msgstr "### 術語表／替換庫\n- 直接在表格中編輯\n- 匯入 CSV（兩欄：English, {target_lang}）\n- 匯入 Subtitle Edit `.template`（盡力從 XML 解析）\n"
+
+msgid "English"
+msgstr "英文"
+
+msgid "Traditional Chinese"
+msgstr "繁體中文"
+
+msgid "Note"
+msgstr "備註"
+
+msgid "Enabled"
+msgstr "啟用"
+
+msgid "Load"
+msgstr "讀取"
+
+msgid "Save"
+msgstr "儲存"
+
+msgid "Import CSV"
+msgstr "匯入 CSV"
+
+msgid "Import Subtitle Edit .template"
+msgstr "匯入 Subtitle Edit .template"
+
+msgid "Glossary status"
+msgstr "術語表狀態"
+
+#: setup tab
+msgid "### config.json\nEdit `config.json` to point to your GGUF model files under `./models/`.\n\nIf missing, the Translate tab will show a clear error.\n"
+msgstr "### config.json\n請編輯 `config.json`，指向 `./models/` 底下的 GGUF 模型檔。\n\n若缺少設定，翻譯分頁會顯示清楚的錯誤訊息。\n"
+
+msgid "Write to config.json"
+msgstr "寫入 config.json"
+
+msgid "Run mode"
+msgstr "執行模式"
+
+msgid "all = A→E; A = Audio; B = Brief v1; C = single-frame vision → brief v2; D = multi-frame vision → brief v3; E = Translate"
+msgstr "all = A→E；A = 音訊；B = Brief v1；C = 單幀視覺 → brief v2；D = 多幀視覺 → brief v3；E = 翻譯"
+
+msgid "all = A→B→(C/D)→E→F; E = context expansion; F = Translate"
+msgstr "all = A→B→(C/D)→E→F；E = 上下文擴充；F = 翻譯"
+
+msgid "Run E scheme (when to use main vs. localization model)"
+msgstr "Run E 方案（選擇時機：主模型／在地化模型 強或弱）"
+
+msgid "Run F scheme (when to use main vs. localization model)"
+msgstr "Run F 方案（選擇時機：主模型／在地化模型 強或弱）"
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run E."
+msgstr "Full=雙強 | MAIN-led=主強地弱 | LOCAL-led=地強主弱 | Draft-first=雙弱。詳見 README Run E 方案。"
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run F."
+msgstr "Full=雙強 | MAIN-led=主強地弱 | LOCAL-led=地強主弱 | Draft-first=雙弱。詳見 README Run F 方案。"
+
+msgid "Enable context expansion fallback (Run E, need_more_context)"
+msgstr "啟用更多上下文備援（Run E，need_more_context）"
+
+msgid "Full (both strong)"
+msgstr "Full（主強＋地強）"
+
+msgid "MAIN-led (main strong, local weak)"
+msgstr "MAIN-led（主強地弱）"
+
+msgid "LOCAL-led (local strong, main weak)"
+msgstr "LOCAL-led（地強主弱）"
+
+msgid "Draft-first (both weak)"
+msgstr "Draft-first（雙弱）"
+
+msgid "Target language (locale code)"
+msgstr "目標語言（語言代碼）"
+
+msgid "Target language"
+msgstr "目標語言"
+
+msgid "configured in language_config.json"
+msgstr "設定於 language_config.json"
+
+msgid "Idle."
+msgstr "閒置中。"
+
+msgid "Error: {error}"
+msgstr "錯誤：{error}"
+
+msgid "Please upload an SRT file."
+msgstr "請上傳 SRT 檔案。"
+
+msgid "Missing model files. Please follow the README to download GGUF models into ./models\n\n"
+msgstr "缺少模型檔案。請依照 README 下載 GGUF 模型至 ./models\n\n"
+
+msgid "Missing models."
+msgstr "缺少模型。"
+
+msgid "SRT has 0 lines."
+msgstr "SRT 檔案有 0 行。"
+
+msgid "Parsing subtitles... ({total} lines)"
+msgstr "解析字幕中...（{total} 行）"
+
+msgid "Run A: Audio analysis..."
+msgstr "執行 A：音訊分析中..."
+
+msgid "Run A: Audio analysis"
+msgstr "執行 A：音訊分析"
+
+msgid "Run A: Loaded existing results ({count} items)"
+msgstr "執行 A：已載入現有結果（{count} 項）"
+
+msgid "Run A: Starting audio analysis..."
+msgstr "執行 A：開始音訊分析..."
+
+msgid "Run A: Processing... (check log for detailed progress)"
+msgstr "執行 A：處理中...（請查看日誌以了解詳細進度）"
+
+msgid "Run A: Completed ({count} items)"
+msgstr "執行 A：完成（{count} 項）"
+
+msgid "Run A: Error occurred, re-analyzing..."
+msgstr "執行 A：發生錯誤，重新分析中..."
+
+msgid "Run A: Completed"
+msgstr "執行 A：完成"
+
+msgid "Run B: Loading main reasoning model (Stage 2)..."
+msgstr "執行 B：載入主要推理模型（階段 2）..."
+
+msgid "Run B: Loading main reasoning model (Stage 2)"
+msgstr "執行 B：載入主要推理模型（階段 2）"
+
+msgid "Run B: Loading model / processing... (see log)"
+msgstr "執行 B：載入模型／處理中...（請查看日誌）"
+
+msgid "Run B: Model loaded, processing with parallel batch inference..."
+msgstr "執行 B：模型已載入，使用並行批次推理處理中..."
+
+msgid "Run B: Reloading main reasoning model (Stage 2)..."
+msgstr "執行 B：重新載入主要推理模型（階段 2）..."
+
+msgid "Run B: Reloading / processing... (see log)"
+msgstr "執行 B：重新載入／處理中...（請查看日誌）"
+
+msgid "Run B: Model reloaded, processing with parallel batch inference..."
+msgstr "執行 B：模型已重新載入，使用並行批次推理處理中..."
+
+msgid "Run B: Completed"
+msgstr "執行 B：完成"
+
+msgid "Run B: Completed ({count} items)"
+msgstr "執行 B：完成（{count} 項）"
+
+msgid "Run C: Loading vision model (1-frame) for {count} items..."
+msgstr "執行 C：為 {count} 項載入視覺模型（單張）..."
+
+msgid "Run C: Loading vision model (1-frame)"
+msgstr "執行 C：載入視覺模型（單張）"
+
+msgid "Run C: Loading vision model (1-frame)..."
+msgstr "執行 C：載入視覺模型（單張）..."
+
+msgid "Run C: Vision model loaded, analyzing frames..."
+msgstr "執行 C：視覺模型已載入，分析影格中..."
+
+msgid "Run C: Reloading vision model (1-frame)..."
+msgstr "執行 C：重新載入視覺模型（單張）..."
+
+msgid "Run C: Vision model reloaded, analyzing frames..."
+msgstr "執行 C：視覺模型已重新載入，分析影格中..."
+
+msgid "Run C: Regenerating brief v2 with vision..."
+msgstr "執行 C：使用視覺重新產生簡報 v2..."
+
+msgid "Run C: Reloading main reasoning model for brief v2..."
+msgstr "執行 C：為簡報 v2 重新載入主要推理模型..."
+
+msgid "Run C: Loading model / brief v2... (see log)"
+msgstr "執行 C：載入模型／簡報 v2...（請查看日誌）"
+
+msgid "Run C: Main model reloaded, regenerating brief v2 with parallel batch inference..."
+msgstr "執行 C：主要模型已重新載入，使用並行批次推理重新產生簡報 v2..."
+
+msgid "Run C: Reloading / brief v2... (see log)"
+msgstr "執行 C：重新載入／簡報 v2...（請查看日誌）"
+
+msgid "Run C: Completed"
+msgstr "執行 C：完成"
+
+msgid "Run C: Completed ({count} items)"
+msgstr "執行 C：完成（{count} 項）"
+
+msgid "Run D: Loading vision model (multi-frame) for {count} items..."
+msgstr "執行 D：為 {count} 項載入視覺模型（多張）..."
+
+msgid "Run D: Loading vision model (multi-frame)"
+msgstr "執行 D：載入視覺模型（多張）"
+
+msgid "Run D: Loading vision model (multi-frame)..."
+msgstr "執行 D：載入視覺模型（多張）..."
+
+msgid "Run D: Vision model loaded, analyzing multiple frames..."
+msgstr "執行 D：視覺模型已載入，分析多張影格中..."
+
+msgid "Run D: Reloading vision model (multi-frame)..."
+msgstr "執行 D：重新載入視覺模型（多張）..."
+
+msgid "Run D: Vision model reloaded, analyzing multiple frames..."
+msgstr "執行 D：視覺模型已重新載入，分析多張影格中..."
+
+msgid "Run D: Regenerating brief v3 with multi-frame vision..."
+msgstr "執行 D：使用多張視覺重新產生簡報 v3..."
+
+msgid "Run D: Reloading main reasoning model for brief v3..."
+msgstr "執行 D：為簡報 v3 重新載入主要推理模型..."
+
+msgid "Run D: Loading model / brief v3... (see log)"
+msgstr "執行 D：載入模型／簡報 v3...（請查看日誌）"
+
+msgid "Run D: Main model reloaded, regenerating brief v3 with parallel batch inference..."
+msgstr "執行 D：主要模型已重新載入，使用並行批次推理重新產生簡報 v3..."
+
+msgid "Run D: Reloading / brief v3... (see log)"
+msgstr "執行 D：重新載入／簡報 v3...（請查看日誌）"
+
+msgid "Run D: Completed"
+msgstr "執行 D：完成"
+
+msgid "Run D: Completed ({count} items)"
+msgstr "執行 D：完成（{count} 項）"
+
+msgid "Run E: Context expansion..."
+msgstr "執行 E：上下文擴充..."
+
+msgid "Run E: Context expansion"
+msgstr "執行 E：上下文擴充"
+
+msgid "Run E: Completed"
+msgstr "執行 E：完成"
+
+msgid "Run F: Loading translation model (localization)..."
+msgstr "執行 F：載入翻譯模型（在地化）..."
+
+msgid "Run F: Loading translation model (localization)"
+msgstr "執行 F：載入翻譯模型（在地化）"
+
+msgid "Run F: Loading translation model / processing... (see log)"
+msgstr "執行 F：載入翻譯模型／處理中...（請查看日誌）"
+
+msgid "Run F: Translation model loaded, processing with parallel batch inference..."
+msgstr "執行 F：翻譯模型已載入，使用並行批次推理處理中..."
+
+msgid "Run F: Reloading translation model (localization)..."
+msgstr "執行 F：重新載入翻譯模型（在地化）..."
+
+msgid "Run F: Reloading / processing... (see log)"
+msgstr "執行 F：重新載入／處理中...（請查看日誌）"
+
+msgid "Run F: Translation model reloaded, processing with parallel batch inference..."
+msgstr "執行 F：翻譯模型已重新載入，使用並行批次推理處理中..."
+
+msgid "Run F: Completed"
+msgstr "執行 F：完成"
+
+msgid "Translation not executed (Run F not selected)."
+msgstr "未執行翻譯（未選擇執行 F）。"
+
+msgid "Run E: Loading translation model (localization)..."
+msgstr "執行 E：載入翻譯模型（在地化）..."
+
+msgid "Run E: Loading translation model (localization)"
+msgstr "執行 E：載入翻譯模型（在地化）"
+
+msgid "Run E: Loading translation model / processing... (see log)"
+msgstr "執行 E：載入翻譯模型／處理中...（請查看日誌）"
+
+msgid "Run E: Translation model loaded, processing with parallel batch inference..."
+msgstr "執行 E：翻譯模型已載入，使用並行批次推理處理中..."
+
+msgid "Run E: Reloading translation model (localization)..."
+msgstr "執行 E：重新載入翻譯模型（在地化）..."
+
+msgid "Run E: Reloading / processing... (see log)"
+msgstr "執行 E：重新載入／處理中...（請查看日誌）"
+
+msgid "Run E: Translation model reloaded, processing with parallel batch inference..."
+msgstr "執行 E：翻譯模型已重新載入，使用並行批次推理處理中..."
+
+msgid "Run E: Completed"
+msgstr "執行 E：完成"
+
+msgid "All runs completed!"
+msgstr "所有執行完成！"
+
+msgid "Translation not executed (Run E not selected)."
+msgstr "未執行翻譯（未選擇執行 E）。"
+
+msgid "Loaded {count} entries from {path}"
+msgstr "從 {path} 載入 {count} 個項目"
+
+msgid "Saved {count} entries to {path}"
+msgstr "已儲存 {count} 個項目至 {path}"
+
+msgid "Imported {new_count} from CSV. Total {total_count}."
+msgstr "從 CSV 匯入 {new_count} 個項目。總計 {total_count} 個。"
+
+msgid "Imported {new_count} from .template (best-effort). Total {total_count}."
+msgstr "從 .template 匯入 {new_count} 個項目（盡力解析）。總計 {total_count} 個。"
+
+msgid "Saved config.json"
+msgstr "已儲存 config.json"
+
+msgid "Failed: {error}"
+msgstr "失敗：{error}"
+
+

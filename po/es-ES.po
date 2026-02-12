@@ -1,0 +1,393 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: local-subtitle-translator 1.0\n"
+"Language: es-ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# UI translations for Spanish (Spain)
+
+msgid "Local Subtitle Translator (Vision + Reason)"
+msgstr "Traductor local de subtítulos (visión + comprensión)"
+
+msgid "# 🎬 Local Subtitle Translator (EN → target language)\nNo Ollama needed. Runs with llama-cpp-python (GGUF) + optional local vision via Moondream2.\n"
+msgstr "# 🎬 Traductor local de subtítulos (inglés → idioma objetivo)\nNo necesitas instalar Ollama. Utiliza llama-cpp-python (GGUF) en local y, opcionalmente, el modelo de visión local Moondream2.\n"
+
+msgid "No Ollama needed. Runs with llama-cpp-python (GGUF) + optional local vision (GGUF vision model)."
+msgstr "No necesitas Ollama. Utiliza llama-cpp-python (GGUF) en local y, opcionalmente, un modelo de visión GGUF local."
+
+msgid "Video (MKV/MP4) — required for audio and vision analysis"
+msgstr "Vídeo (MKV/MP4) — necesario para análisis de audio y visión"
+
+msgid "SRT (English)"
+msgstr "SRT (inglés)"
+
+msgid "SRT encoding"
+msgstr "Codificación del SRT"
+
+msgid "Enable vision fallback (Moondream2)"
+msgstr "Activar respaldo por visión (Moondream2)"
+
+msgid "Enable vision fallback (Run C/D, local GGUF vision model)"
+msgstr "Activar respaldo por visión (Run C/D, modelo de visión GGUF local)"
+
+msgid "Max frames per subtitle (Run D)"
+msgstr "Máximo de fotogramas por línea (Run D multicuadro)"
+
+msgid "Frame offsets within subtitle span (comma-separated, 0..1)"
+msgstr "Desplazamientos de fotograma dentro del intervalo del subtítulo (0..1, separados por comas)"
+
+msgid "e.g. 0.3,0.7"
+msgstr "ej.: 0.3,0.7"
+
+msgid "🚀 Translate"
+msgstr "🚀 Traducir"
+
+msgid "Reset"
+msgstr "Restablecer"
+
+msgid "Idle. Ready for new translation."
+msgstr "Inactivo. Listo para nueva traducción."
+
+msgid "Download translated SRT"
+msgstr "Descargar SRT traducido"
+
+msgid "Status (EN)"
+msgstr "Estado (EN)"
+
+msgid "Latest log"
+msgstr "Última línea del registro"
+
+msgid "Preview frame (when vision runs)"
+msgstr "Fotograma de vista previa (cuando se usa visión)"
+
+msgid "Log (last 200 lines)"
+msgstr "Registro (últimas 200 líneas)"
+
+#: tab labels
+msgid "Translate"
+msgstr "Traducir"
+
+msgid "Glossary"
+msgstr "Glosario"
+
+msgid "Setup / Model Paths"
+msgstr "Configuración / Rutas de modelos"
+
+msgid "### Glossary / Replace Library\n- Edit in-table\n- Import CSV (2 columns: English, {target_lang})\n- Import Subtitle Edit `.template` (best-effort XML extraction)\n"
+msgstr "### Glosario / Biblioteca de reemplazos\n- Editar directamente en la tabla\n- Importar CSV (2 columnas: English, {target_lang})\n- Importar `.template` de Subtitle Edit (extracción mejor-esfuerzo desde XML)\n"
+
+msgid "English"
+msgstr "Inglés"
+
+msgid "Traditional Chinese"
+msgstr "Chino tradicional"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Enabled"
+msgstr "Activado"
+
+msgid "Load"
+msgstr "Cargar"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Import CSV"
+msgstr "Importar CSV"
+
+msgid "Import Subtitle Edit .template"
+msgstr "Importar Subtitle Edit .template"
+
+msgid "Glossary status"
+msgstr "Estado del glosario"
+
+msgid "### config.json\nEdit `config.json` to point to your GGUF model files under `./models/`.\n\nIf missing, the Translate tab will show a clear error.\n"
+msgstr "### config.json\nEdita `config.json` para que apunte a tus archivos de modelo GGUF dentro de `./models/`.\n\nSi falta la configuración, la pestaña de traducción mostrará un error claro.\n"
+
+msgid "Write to config.json"
+msgstr "Escribir en config.json"
+
+msgid "Run mode"
+msgstr "Modo de ejecución"
+
+msgid "all = A→E; A = Audio; B = Brief v1; C = single-frame vision → brief v2; D = multi-frame vision → brief v3; E = Translate"
+msgstr "all = A→E; A = Audio; B = Brief v1; C = visión 1 fotograma → brief v2; D = visión multicuadro → brief v3; E = Traducir"
+
+msgid "Run E scheme (when to use main vs. localization model)"
+msgstr "Esquema Run E (cuándo usar: modelo principal / modelo local fuerte o débil)"
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run E."
+msgstr "Full=ambos fuertes | MAIN-led=principal fuerte, local débil | LOCAL-led=local fuerte, principal débil | Draft-first=ambos débiles. Ver README esquema Run E."
+
+msgid "all = A→B→(C/D)→E→F; E = context expansion; F = Translate"
+msgstr "all = A→B→(C/D)→E→F; E = expansión de contexto; F = Traducir"
+
+msgid "Run F scheme (when to use main vs. localization model)"
+msgstr "Esquema Run F (cuándo usar: modelo principal / modelo local fuerte o débil)"
+
+msgid "Full=both strong | MAIN-led=main strong | LOCAL-led=local strong | Draft-first=both weak. See README Run F."
+msgstr "Full=ambos fuertes | MAIN-led=principal fuerte, local débil | LOCAL-led=local fuerte, principal débil | Draft-first=ambos débiles. Ver README esquema Run F."
+
+msgid "Enable context expansion fallback (Run E, need_more_context)"
+msgstr "Habilitar fallback de expansión de contexto (Run E, need_more_context)"
+
+msgid "Full (both strong)"
+msgstr "Full (principal fuerte + local fuerte)"
+
+msgid "MAIN-led (main strong, local weak)"
+msgstr "MAIN-led (principal fuerte, local débil)"
+
+msgid "LOCAL-led (local strong, main weak)"
+msgstr "LOCAL-led (local fuerte, principal débil)"
+
+msgid "Draft-first (both weak)"
+msgstr "Draft-first (ambos débiles)"
+
+msgid "Target language (locale code)"
+msgstr "Idioma objetivo (código de localización)"
+
+msgid "Target language"
+msgstr "Idioma objetivo"
+
+msgid "configured in language_config.json"
+msgstr "configurado en language_config.json"
+
+msgid "Idle."
+msgstr "Inactivo."
+
+msgid "Error: {error}"
+msgstr "Error: {error}"
+
+msgid "Please upload an SRT file."
+msgstr "Por favor, sube un archivo SRT."
+
+msgid "Missing model files. Please follow the README to download GGUF models into ./models\n\n"
+msgstr "Faltan archivos de modelo. Por favor, sigue el README para descargar modelos GGUF en ./models\n\n"
+
+msgid "Missing models."
+msgstr "Faltan modelos."
+
+msgid "SRT has 0 lines."
+msgstr "El archivo SRT tiene 0 líneas."
+
+msgid "Parsing subtitles... ({total} lines)"
+msgstr "Analizando subtítulos... ({total} líneas)"
+
+msgid "Run A: Audio analysis..."
+msgstr "Ejecución A: Analizando audio..."
+
+msgid "Run A: Audio analysis"
+msgstr "Ejecución A: Análisis de audio"
+
+msgid "Run A: Loaded existing results ({count} items)"
+msgstr "Ejecución A: Resultados existentes cargados ({count} elementos)"
+
+msgid "Run A: Starting audio analysis..."
+msgstr "Ejecución A: Iniciando análisis de audio..."
+
+msgid "Run A: Processing... (check log for detailed progress)"
+msgstr "Ejecución A: Procesando... (consulta el registro para ver el progreso detallado)"
+
+msgid "Run A: Completed ({count} items)"
+msgstr "Ejecución A: Completada ({count} elementos)"
+
+msgid "Run A: Error occurred, re-analyzing..."
+msgstr "Ejecución A: Ocurrió un error, reanalizando..."
+
+msgid "Run A: Completed"
+msgstr "Ejecución A: Completada"
+
+msgid "Run B: Loading main reasoning model (Stage 2)..."
+msgstr "Ejecución B: Cargando modelo de razonamiento principal (Etapa 2)..."
+
+msgid "Run B: Loading main reasoning model (Stage 2)"
+msgstr "Ejecución B: Cargando modelo de razonamiento principal (Etapa 2)"
+
+msgid "Run B: Loading model / processing... (see log)"
+msgstr "Ejecución B: Cargando modelo / procesando... (consulta el registro)"
+
+msgid "Run B: Model loaded, processing with parallel batch inference..."
+msgstr "Ejecución B: Modelo cargado, procesando con inferencia por lotes paralela..."
+
+msgid "Run B: Reloading main reasoning model (Stage 2)..."
+msgstr "Ejecución B: Recargando modelo de razonamiento principal (Etapa 2)..."
+
+msgid "Run B: Reloading / processing... (see log)"
+msgstr "Ejecución B: Recargando / procesando... (consulta el registro)"
+
+msgid "Run B: Model reloaded, processing with parallel batch inference..."
+msgstr "Ejecución B: Modelo recargado, procesando con inferencia por lotes paralela..."
+
+msgid "Run B: Completed"
+msgstr "Ejecución B: Completada"
+
+msgid "Run B: Completed ({count} items)"
+msgstr "Ejecución B: Completada ({count} elementos)"
+
+msgid "Run C: Loading vision model (1-frame) for {count} items..."
+msgstr "Ejecución C: Cargando modelo de visión (1 fotograma) para {count} elementos..."
+
+msgid "Run C: Loading vision model (1-frame)"
+msgstr "Ejecución C: Cargando modelo de visión (1 fotograma)"
+
+msgid "Run C: Loading vision model (1-frame)..."
+msgstr "Ejecución C: Cargando modelo de visión (1 fotograma)..."
+
+msgid "Run C: Vision model loaded, analyzing frames..."
+msgstr "Ejecución C: Modelo de visión cargado, analizando fotogramas..."
+
+msgid "Run C: Reloading vision model (1-frame)..."
+msgstr "Ejecución C: Recargando modelo de visión (1 fotograma)..."
+
+msgid "Run C: Vision model reloaded, analyzing frames..."
+msgstr "Ejecución C: Modelo de visión recargado, analizando fotogramas..."
+
+msgid "Run C: Regenerating brief v2 with vision..."
+msgstr "Ejecución C: Regenerando resumen v2 con visión..."
+
+msgid "Run C: Reloading main reasoning model for brief v2..."
+msgstr "Ejecución C: Recargando modelo de razonamiento principal para resumen v2..."
+
+msgid "Run C: Loading model / brief v2... (see log)"
+msgstr "Ejecución C: Cargando modelo / resumen v2... (consulta el registro)"
+
+msgid "Run C: Main model reloaded, regenerating brief v2 with parallel batch inference..."
+msgstr "Ejecución C: Modelo principal recargado, regenerando resumen v2 con inferencia por lotes paralela..."
+
+msgid "Run C: Reloading / brief v2... (see log)"
+msgstr "Ejecución C: Recargando / resumen v2... (consulta el registro)"
+
+msgid "Run C: Completed"
+msgstr "Ejecución C: Completada"
+
+msgid "Run C: Completed ({count} items)"
+msgstr "Ejecución C: Completada ({count} elementos)"
+
+msgid "Run D: Loading vision model (multi-frame) for {count} items..."
+msgstr "Ejecución D: Cargando modelo de visión (múltiples fotogramas) para {count} elementos..."
+
+msgid "Run D: Loading vision model (multi-frame)"
+msgstr "Ejecución D: Cargando modelo de visión (múltiples fotogramas)"
+
+msgid "Run D: Loading vision model (multi-frame)..."
+msgstr "Ejecución D: Cargando modelo de visión (múltiples fotogramas)..."
+
+msgid "Run D: Vision model loaded, analyzing multiple frames..."
+msgstr "Ejecución D: Modelo de visión cargado, analizando múltiples fotogramas..."
+
+msgid "Run D: Reloading vision model (multi-frame)..."
+msgstr "Ejecución D: Recargando modelo de visión (múltiples fotogramas)..."
+
+msgid "Run D: Vision model reloaded, analyzing multiple frames..."
+msgstr "Ejecución D: Modelo de visión recargado, analizando múltiples fotogramas..."
+
+msgid "Run D: Regenerating brief v3 with multi-frame vision..."
+msgstr "Ejecución D: Regenerando resumen v3 con visión de múltiples fotogramas..."
+
+msgid "Run D: Reloading main reasoning model for brief v3..."
+msgstr "Ejecución D: Recargando modelo de razonamiento principal para resumen v3..."
+
+msgid "Run D: Loading model / brief v3... (see log)"
+msgstr "Ejecución D: Cargando modelo / resumen v3... (consulta el registro)"
+
+msgid "Run D: Main model reloaded, regenerating brief v3 with parallel batch inference..."
+msgstr "Ejecución D: Modelo principal recargado, regenerando resumen v3 con inferencia por lotes paralela..."
+
+msgid "Run D: Reloading / brief v3... (see log)"
+msgstr "Ejecución D: Recargando / resumen v3... (consulta el registro)"
+
+msgid "Run D: Completed"
+msgstr "Ejecución D: Completada"
+
+msgid "Run D: Completed ({count} items)"
+msgstr "Ejecución D: Completada ({count} elementos)"
+
+msgid "Run E: Context expansion..."
+msgstr "Ejecución E: Expansión de contexto..."
+
+msgid "Run E: Context expansion"
+msgstr "Ejecución E: Expansión de contexto"
+
+msgid "Run E: Completed"
+msgstr "Ejecución E: Completada"
+
+msgid "Run F: Loading translation model (localization)..."
+msgstr "Ejecución F: Cargando modelo de traducción (localización)..."
+
+msgid "Run F: Loading translation model (localization)"
+msgstr "Ejecución F: Cargando modelo de traducción (localización)"
+
+msgid "Run F: Loading translation model / processing... (see log)"
+msgstr "Ejecución F: Cargando modelo / procesando... (ver log)"
+
+msgid "Run F: Translation model loaded, processing with parallel batch inference..."
+msgstr "Ejecución F: Modelo cargado, procesando con inferencia por lotes en paralelo..."
+
+msgid "Run F: Reloading translation model (localization)..."
+msgstr "Ejecución F: Recargando modelo de traducción (localización)..."
+
+msgid "Run F: Reloading / processing... (see log)"
+msgstr "Ejecución F: Recargando / procesando... (ver log)"
+
+msgid "Run F: Translation model reloaded, processing with parallel batch inference..."
+msgstr "Ejecución F: Modelo recargado, procesando con inferencia por lotes en paralelo..."
+
+msgid "Run F: Completed"
+msgstr "Ejecución F: Completada"
+
+msgid "Translation not executed (Run F not selected)."
+msgstr "Traducción no ejecutada (ejecución F no seleccionada)."
+
+msgid "Run E: Loading translation model (localization)..."
+msgstr "Ejecución E: Cargando modelo de traducción (localización)..."
+
+msgid "Run E: Loading translation model (localization)"
+msgstr "Ejecución E: Cargando modelo de traducción (localización)"
+
+msgid "Run E: Loading translation model / processing... (see log)"
+msgstr "Ejecución E: Cargando modelo de traducción / procesando... (consulta el registro)"
+
+msgid "Run E: Translation model loaded, processing with parallel batch inference..."
+msgstr "Ejecución E: Modelo de traducción cargado, procesando con inferencia por lotes paralela..."
+
+msgid "Run E: Reloading translation model (localization)..."
+msgstr "Ejecución E: Recargando modelo de traducción (localización)..."
+
+msgid "Run E: Reloading / processing... (see log)"
+msgstr "Ejecución E: Recargando / procesando... (consulta el registro)"
+
+msgid "Run E: Translation model reloaded, processing with parallel batch inference..."
+msgstr "Ejecución E: Modelo de traducción recargado, procesando con inferencia por lotes paralela..."
+
+msgid "Run E: Completed"
+msgstr "Ejecución E: Completada"
+
+msgid "All runs completed!"
+msgstr "¡Todas las ejecuciones completadas!"
+
+msgid "Translation not executed (Run E not selected)."
+msgstr "Traducción no ejecutada (Ejecución E no seleccionada)."
+
+msgid "Loaded {count} entries from {path}"
+msgstr "Cargadas {count} entradas desde {path}"
+
+msgid "Saved {count} entries to {path}"
+msgstr "Guardadas {count} entradas en {path}"
+
+msgid "Imported {new_count} from CSV. Total {total_count}."
+msgstr "Importadas {new_count} desde CSV. Total {total_count}."
+
+msgid "Imported {new_count} from .template (best-effort). Total {total_count}."
+msgstr "Importadas {new_count} desde .template (mejor esfuerzo). Total {total_count}."
+
+msgid "Saved config.json"
+msgstr "config.json guardado"
+
+msgid "Failed: {error}"
+msgstr "Falló: {error}"
+
+

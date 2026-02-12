@@ -1,0 +1,54 @@
+MIT License
+
+Copyright (c) 2026 Local Subtitle Translator contributors.
+
+This project (Local Subtitle Translator) is released as version 1.0. The scripts,
+application logic, and documentation in this repository are licensed under the
+MIT License below, unless otherwise stated.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+THIRD-PARTY NOTICES (Run A only; Run B and later models are not listed here)
+-------------------------------------------------------------------------------
+The following services or resources are used by this project and require
+copyright / usage / restriction notices. Respect is given to the original
+authors and licensors.
+
+1. Audio model used in Run A (speech emotion recognition)
+   - Name: wav2vec2-lg-xlsr-en-speech-emotion-recognition
+   - Author: Enrique Hernández Calabrés (ehcalabres)
+   - Source: https://huggingface.co/ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition
+   - License: Apache License 2.0
+   - Base model: jonatasgrosman/wav2vec2-large-xlsr-53-english (Wav2Vec 2.0)
+   - Training data: RAVDESS (Ryerson Audio-Visual Database of Emotional Speech
+     and Song), https://zenodo.org/record/1188976
+   - This model is loaded from Hugging Face Hub at runtime when Run A is
+     executed. It is not bundled with this repository. Use and redistribution
+     of the model are governed by its Apache-2.0 license and the Hugging Face
+     terms of use.
+
+2. Hugging Face
+   - This project uses the Hugging Face Hub and Transformers to load the
+     above audio model (Run A). Usage is subject to Hugging Face’s terms and
+     conditions: https://huggingface.co/terms
+
+-------------------------------------------------------------------------------
+End of third-party notices (Run A only).
+-------------------------------------------------------------------------------
