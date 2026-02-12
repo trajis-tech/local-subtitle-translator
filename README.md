@@ -1,3 +1,16 @@
+SmartSRT builds an English, language-neutral translation brief first (with audio/visual/context assistance), then generates the final subtitles and enforces a glossary at the output—so you get more consistent, controllable results than one-shot translation.
+
+| Aspect                                          | Typical online translators (Google/DeepL-like) | Typical subtitle translators (single-pass / batch tools) | **Trajis SmartSRT**                                                                                                                  |
+| ----------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Offline / privacy                               | Usually **no**                                 | Sometimes                                                | **Yes — offline-first & portable**, models live in `./models/`                                                                       |
+| Subtitle-aware signals (tone / emotion / scene) | Mostly **none**                                | Limited                                                  | **Run A audio tone/emotion tags** + optional **Run C/D visual assist** → more context-aware subtitles                                |
+| Long-video consistency                          | Can drift across chunks                        | Often drifts                                             | **A→F pipeline with an English “brief”** + optional **Run E context expansion** when needed                                          |
+| Mix-language / drift control                    | Hard to control                                | Hard to control                                          | **Strict language boundary:** A–E are **English-only** (incl. brief), **only F outputs target language**                             |
+| Terminology consistency                         | Manual fixes                                   | Basic find/replace                                       | **Glossary lock:** not injected into prompts; **forced at output stage**, can be **locale-specific** (zh-TW / zh-CN / ja-JP / es-ES) |
+| Strategy for multi-model setups                 | N/A                                            | N/A                                                      | **Run F schemes** (e.g., main-led / local-led / draft-first) to mix “main” + “localization” models                                   |
+| Alignment safety                                | Not SRT-aware                                  | Often index-based → can shift                            | **sub_id + timestamps alignment** to reduce offset/shift issues                                                                      |
+
+
 # Trajis SmartSRT (Portable, Offline Models)
 
 Trajis SmartSRT runs a local subtitle translation pipeline using **llama-cpp-python**.
