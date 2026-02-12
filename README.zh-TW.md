@@ -171,31 +171,8 @@ models/
 
 ## config.json
 
-執行 `install.bat`（或 `install.sh`）時，若沒有 `config.json`，會執行 `scripts/plan_models.py` 建立一個最佳努力的 `config.json`。`start.bat` / `start.sh` 不會建立 config，僅負責啟動程式。
-如果選擇不同的量化檔案，請編輯它。
-
-關鍵欄位：
-
-- `models_dir`：預設 `models`
-- `reason_dir`：主模型目錄（預設：`./models/main/`）
-- `translate_dir`：在地化模型目錄（預設：`./models/local/`）
-- `vision_text_dir` / `vision_mmproj_dir`：視覺模型目錄（預設：`./models/vision/`）
-- `audio.model_id_or_path`：Run A 使用的 Hugging Face 模型 id（預設：`ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition`）
-- `audio.enabled`：啟用/停用音訊分析（預設：`true`）
-- `audio.device`：`"auto"`（有 CUDA 則用）、`"cuda"` 或 `"cpu"`（預設：`auto`）
-- `audio.device_index`：使用 CUDA 時的 GPU 索引（預設：`0`）
-- `audio.batch_size`：情緒推論的批次大小；較大可提高 GPU 利用率（預設：`16`）
-- `vision.enabled`：選用視覺 fallback
-- `pipeline.n_frames`：多張影像視覺的幀數（預設：`3`）
-- `pipeline.work_dir`：中間結果目錄（預設：`./work/`）
-- `pipeline.run_e_scheme`：Run F 方案 — `"full"` | `"main_led"` | `"local_led"` | `"draft_first"`（預設：`"full"`）。詳見上方 **Run F 方案**。
-- `pipeline.local_polish_chunk_size`：Run F local_polish 每批行數（預設：`60`）
-- `pipeline.group_translate_max_segments`：Run F 主翻譯每子群組最大段數（預設：`4`）
-- `pipeline.isolate_heavy_requests`：為 `true` 時，過重的請求（超過 token/行數/段數閾值）改以 one-shot 子行程執行，避免 OOM 拖死主程式（預設：`true`）
-- `pipeline.isolate_heavy_timeout_sec`：隔離子行程逾時秒數（預設：`600`）
-- `pipeline.strip_punctuation`：為 `true` 時，在 Run F 最終輸出時去除標點（預設：`true`）
-- `pipeline.strip_punctuation_keep_decimal`：為 `true` 時，保護小數如 `3.14` 不被拆開（預設：`true`）
-- `pipeline.strip_punctuation_keep_acronym`：為 `true` 時，保護縮寫如 `U.S.` 不被拆開（預設：`true`）
+執行 `install.bat`（或 `install.sh`）時，若沒有 `config.json`，會執行 `scripts/plan_models.py` 建立 `config.json`。`start.bat` / `start.sh` 不會建立 config，僅負責啟動程式。
+一般使用**不需要維護 config.json**，模型會從 `./models` 目錄自動偵測。僅在需要進階調校（VRAM、批次大小、備援行為）時才修改。
 
 ---
 

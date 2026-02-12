@@ -1,0 +1,29 @@
+{
+  "models_dir": "./models",
+  "reason_dir": "./models/main",
+  "translate_dir": "./models/local",
+  "vision_text_dir": "./models/vision",
+  "vision_mmproj_dir": "./models/vision",
+  "vision": {
+    "enabled": false,
+    "text_model": "moondream2-text-model-f16.gguf",
+    "mmproj_model": "moondream2-mmproj-f16.gguf",
+    "max_frames_per_sub": 1,
+    "frame_offsets": [0.5]
+  },
+  "llama_cpp": {
+    "n_ctx_reason": 8192,
+    "n_ctx_translate": 8192,
+    "n_gpu_layers_reason": 60,
+    "n_gpu_layers_translate": 60,
+    "n_threads": 8
+  },
+  "pipeline": {
+    "context_prev_lines": 2,
+    "run_e_scheme": "full",
+    "enable_context_expansion": true
+  },
+  "glossary": {
+    "json_path": "./data/glossary.json"
+  }
+}

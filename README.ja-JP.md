@@ -171,31 +171,8 @@ models/
 
 ## config.json
 
-`install.bat`（または `install.sh`）実行時、`config.json` がない場合は `scripts/plan_models.py` が実行され、最善の `config.json` が作成されます。`start.bat` / `start.sh` は config を作成せず、起動のみ行います。
-異なる量子化ファイルを選択した場合は、それを編集してください。
-
-主要フィールド：
-
-- `models_dir`：デフォルト `models`
-- `reason_dir`：主モデルのディレクトリ（デフォルト：`./models/main/`）
-- `translate_dir`：ローカライゼーションモデルのディレクトリ（デフォルト：`./models/local/`）
-- `vision_text_dir` / `vision_mmproj_dir`：視覚モデルのディレクトリ（デフォルト：`./models/vision/`）
-- `audio.model_id_or_path`：Run A 用 Hugging Face モデル id（デフォルト：`ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition`）
-- `audio.enabled`：音声分析の有効/無効（デフォルト：`true`）
-- `audio.device`：`"auto"`（CUDA 利用時）、`"cuda"` または `"cpu"`（デフォルト：`auto`）
-- `audio.device_index`：CUDA 使用時の GPU インデックス（デフォルト：`0`）
-- `audio.batch_size`：感情推論のバッチサイズ；大きいほど GPU 利用率向上（デフォルト：`16`）
-- `vision.enabled`：オプションの視覚フォールバック
-- `pipeline.n_frames`：マルチフレーム視覚のフレーム数（デフォルト：`3`）
-- `pipeline.work_dir`：中間結果ディレクトリ（デフォルト：`./work/`）
-- `pipeline.run_e_scheme`：Run F スキーム — `"full"` | `"main_led"` | `"local_led"` | `"draft_first"`（デフォルト：`"full"`）。上記 **Run F スキーム** を参照。
-- `pipeline.local_polish_chunk_size`：Run F local_polish の 1 チャンク行数（デフォルト：`60`）
-- `pipeline.group_translate_max_segments`：Run F メイン翻訳のサブグループ最大セグメント数（デフォルト：`4`）
-- `pipeline.isolate_heavy_requests`：`true` の場合、heavy リクエスト（token/行数/セグメントが閾値超過）は one-shot サブプロセスで実行し OOM でメインプロセスが落ちるのを防ぐ（デフォルト：`true`）
-- `pipeline.isolate_heavy_timeout_sec`：隔離ワーカーのタイムアウト秒（デフォルト：`600`）
-- `pipeline.strip_punctuation`：`true` の場合、Run F 最終出力で句読点を除去（デフォルト：`true`）
-- `pipeline.strip_punctuation_keep_decimal`：`true` の場合、`3.14` などの小数を保護（デフォルト：`true`）
-- `pipeline.strip_punctuation_keep_acronym`：`true` の場合、`U.S.` などの略語を保護（デフォルト：`true`）
+`install.bat`（または `install.sh`）実行時、`config.json` がない場合は `scripts/plan_models.py` が `config.json` を作成します。`start.bat` / `start.sh` は config を作成せず、起動のみ行います。
+通常は **config.json を維持する必要はありません**。モデルは `./models` ディレクトリから自動検出されます。VRAM やバッチ設定などの詳細調整が必要な場合のみ編集してください。
 
 ---
 

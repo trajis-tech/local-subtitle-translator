@@ -171,31 +171,8 @@ models/
 
 ## config.json
 
-Cuando ejecuta `install.bat` (o `install.sh`), se ejecuta `scripts/plan_models.py` para crear un `config.json` de mejor esfuerzo si no tiene uno. `start.bat` / `start.sh` no crean config; solo arrancan la aplicación.
-Edítelo si elige diferentes archivos de cuantización.
-
-Campos clave:
-
-- `models_dir`: predeterminado `models`
-- `reason_dir`: directorio para modelos principales (predeterminado: `./models/main/`)
-- `translate_dir`: directorio para modelos de localización (predeterminado: `./models/local/`)
-- `vision_text_dir` / `vision_mmproj_dir`: directorios para modelos de visión (predeterminado: `./models/vision/`)
-- `audio.model_id_or_path`: id del modelo Hugging Face para Run A (predeterminado: `ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition`)
-- `audio.enabled`: habilitar/deshabilitar análisis de audio (predeterminado: `true`)
-- `audio.device`: `"auto"` (usar CUDA si está disponible), `"cuda"` o `"cpu"` (predeterminado: `auto`)
-- `audio.device_index`: índice de GPU al usar CUDA (predeterminado: `0`)
-- `audio.batch_size`: tamaño de lote para inferencia de emoción; mayor = mejor uso de GPU (predeterminado: `16`)
-- `vision.enabled`: fallback de visión opcional
-- `pipeline.n_frames`: número de fotogramas para visión de múltiples fotogramas (predeterminado: `3`)
-- `pipeline.work_dir`: directorio para resultados intermedios (predeterminado: `./work/`)
-- `pipeline.run_e_scheme`: esquema Run F — `"full"` | `"main_led"` | `"local_led"` | `"draft_first"` (predeterminado: `"full"`). Véase **Esquemas Run F** arriba.
-- `pipeline.local_polish_chunk_size`: líneas por chunk en Run E local_polish (predeterminado: `60`)
-- `pipeline.group_translate_max_segments`: segmentos máximos por subgrupo en Run E main translate (predeterminado: `4`)
-- `pipeline.isolate_heavy_requests`: cuando `true`, las peticiones heavy (por encima de umbrales de token/líneas/segmentos) se ejecutan en un subproceso one-shot para evitar que OOM mate el proceso principal (predeterminado: `true`)
-- `pipeline.isolate_heavy_timeout_sec`: tiempo de espera en segundos para el worker aislado (predeterminado: `600`)
-- `pipeline.strip_punctuation`: cuando `true`, eliminar puntuación en la salida final de Run E (predeterminado: `true`)
-- `pipeline.strip_punctuation_keep_decimal`: cuando `true`, proteger decimales como `3.14` (predeterminado: `true`)
-- `pipeline.strip_punctuation_keep_acronym`: cuando `true`, proteger acrónimos como `U.S.` (predeterminado: `true`)
+Cuando ejecuta `install.bat` (o `install.sh`), se ejecuta `scripts/plan_models.py` para crear `config.json` si no existe. `start.bat` / `start.sh` no crean config; solo arrancan la aplicación.
+En uso normal **no es necesario mantener config.json**; los modelos se detectan desde `./models`. Edítelo solo si necesita ajustes avanzados (VRAM, tamaños de lote, fallbacks).
 
 ---
 

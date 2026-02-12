@@ -235,31 +235,8 @@ models/
 
 ## config.json
 
-When you run `install.bat` (or `install.sh`), it runs `scripts/plan_models.py` to create a best-effort `config.json` if you don't have one. `start.bat` / `start.sh` do not create config; they only launch the app.
-Edit it if you choose different quant files.
-
-Key fields:
-
-- `models_dir`: default `models`
-- `reason_dir`: directory for main models (default: `./models/main/`)
-- `translate_dir`: directory for localization models (default: `./models/local/`)
-- `vision_text_dir` / `vision_mmproj_dir`: directories for vision models (default: `./models/vision/`)
-- `audio.model_id_or_path`: Hugging Face model id for Run A (default: `ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition`)
-- `audio.enabled`: enable/disable audio analysis (default: `true`)
-- `audio.device`: `"auto"` (use CUDA if available), `"cuda"`, or `"cpu"` (default: `auto`)
-- `audio.device_index`: GPU index when using CUDA (default: `0` = first GPU)
-- `audio.batch_size`: batch size for emotion inference; larger = better GPU utilization (default: `16`)
-- `vision.enabled`: optional vision fallback
-- `pipeline.n_frames`: number of frames for multi-frame vision (default: `3`)
-- `pipeline.work_dir`: directory for intermediate results (default: `./work/`)
-- `pipeline.run_e_scheme`: Run F scheme — `"full"` | `"main_led"` | `"local_led"` | `"draft_first"` (default: `"full"`). See **Run F schemes** above.
-- `pipeline.local_polish_chunk_size`: lines per chunk for Run F local_polish (default: `60`)
-- `pipeline.group_translate_max_segments`: max segments per sub-group in Run F main translate (default: `4`)
-- `pipeline.isolate_heavy_requests`: when `true`, heavy requests (over token/lines/segments thresholds) run in a one-shot subprocess to avoid OOM killing the main process (default: `true`)
-- `pipeline.isolate_heavy_timeout_sec`: timeout in seconds for the isolated worker (default: `600`)
-- `pipeline.strip_punctuation`: when `true`, strip punctuation on Run F final output (default: `true`)
-- `pipeline.strip_punctuation_keep_decimal`: when `true`, protect decimals like `3.14` from being split (default: `true`)
-- `pipeline.strip_punctuation_keep_acronym`: when `true`, protect acronyms like `U.S.` from being split (default: `true`)
+When you run `install.bat` (or `install.sh`), it runs `scripts/plan_models.py` to create `config.json` if you don't have one. `start.bat` / `start.sh` do not create config; they only launch the app.
+In normal use you **do not need to maintain config.json**. Models are discovered from `./models` directories. Edit config only if you need advanced tuning (VRAM, batch sizes, fallback settings).
 
 ---
 
