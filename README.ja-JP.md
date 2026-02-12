@@ -1,6 +1,6 @@
-# ローカル字幕翻訳ツール（ポータブル、オフラインモデル）
+# Trajis SmartSRT（ポータブル、オフラインモデル）
 
-このプロジェクトは **llama-cpp-python** を使用してローカル字幕翻訳パイプラインを実行します。
+Trajis SmartSRT は **llama-cpp-python** を使用してローカル字幕翻訳パイプラインを実行します。
 **ポータブル**に設計されています：すべての依存関係がこのフォルダ内にあります。
 
 ✅ **オフライン優先**：まず `install.bat`（Windows）または `./install.sh`（Linux/macOS）を**1回**（ネットワーク必要）実行してすべてをダウンロード・インストール；その後は `start.bat` または `./start.sh` で**オフライン起動**できます。
@@ -105,7 +105,7 @@ Video コンポーネントを使用している古い zip を使用している
 - ダウンロード：https://developer.nvidia.com/cuda-downloads
 - ビルド済み llama-cpp-python ホイールは GPU アクセラレーションのために CUDA の事前インストールが必要です
 
-1. このフォルダを任意の場所に展開します（例：`G:\local-subtitle-translator`）。
+1. このフォルダを任意の場所に展開します（例：`G:\Trajis SmartSRT`）。
 
 2. **インストール（1回、ネットワーク必要）** — すべてをダウンロード・インストール：
    - **Windows**：`install.bat` をダブルクリック → ポータブル Python、venv、全 Python 依存（音声 Run A、動画含む）、GPU があれば CUDA PyTorch、PATH に ffmpeg が無ければ `runtime\ffmpeg` にダウンロード、Run A 音声モデルを `models\audio` にダウンロード、ビルド済み llama-cpp-python ホイール、config、BOM。GGUF モデルは手動ダウンロード（下記参照）。

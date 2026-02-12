@@ -1,6 +1,6 @@
-# Local Subtitle Translator (Portable, Offline Models)
+# Trajis SmartSRT (Portable, Offline Models)
 
-This project runs a local subtitle translation pipeline using **llama-cpp-python**.
+Trajis SmartSRT runs a local subtitle translation pipeline using **llama-cpp-python**.
 It is designed to be **portable**: all dependencies live inside this folder.
 
 ✅ **Offline-first**: Run `install.bat` (Windows) or `./install.sh` (Linux/macOS) **once** with network to download and install everything; then use `start.bat` or `./start.sh` for **offline launch** anytime.
@@ -169,7 +169,7 @@ This project is designed for **offline use**: run **install** once (with network
 - Download: https://developer.nvidia.com/cuda-downloads
 - The prebuilt llama-cpp-python wheel requires CUDA to be installed first for GPU acceleration
 
-1. Extract this folder anywhere (example: `G:\local-subtitle-translator`).
+1. Extract this folder anywhere (example: `G:\Trajis SmartSRT`).
 
 2. **Install (one-time, with network)** — downloads and installs everything:
    - **Windows**: Double-click `install.bat` → portable Python, venv, all Python deps (base + audio Run A + video), optional CUDA PyTorch if GPU present, ffmpeg to `runtime\ffmpeg` if not in PATH, Run A audio model to `models\audio`, prebuilt llama-cpp-python wheel, config, BOM. GGUF models are manual (see below).

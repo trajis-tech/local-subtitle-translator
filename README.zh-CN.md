@@ -1,6 +1,6 @@
-# 本地字幕翻译器（便携式、离线模型）
+# Trajis SmartSRT（便携式、离线模型）
 
-本项目使用 **llama-cpp-python** 运行本地字幕翻译流程。
+Trajis SmartSRT 使用 **llama-cpp-python** 运行本地字幕翻译流程。
 设计为**便携式**：所有依赖项都在此文件夹内。
 
 ✅ **离线优先**：先执行 `install.bat`（Windows）或 `./install.sh`（Linux/macOS）**一次**（需网络）下载并安装所有依赖；之后使用 `start.bat` 或 `./start.sh` **离线启动**即可。
@@ -105,7 +105,7 @@ Gradio 内置的 **Video** 组件需要外部 **`ffmpeg`** 可执行文件才能
 - 下载：https://developer.nvidia.com/cuda-downloads
 - 预构建的 llama-cpp-python 轮文件需要先安装 CUDA 才能启用 GPU 加速
 
-1. 将此文件夹解压到任意位置（例如：`G:\local-subtitle-translator`）。
+1. 将此文件夹解压到任意位置（例如：`G:\Trajis SmartSRT`）。
 
 2. **安装（一次、需网络）** — 下载并安装所有依赖与工具：
    - **Windows**：双击 `install.bat` → 便携式 Python、venv、所有 Python 依赖（含音频 Run A、视频），若有 GPU 可选安装 CUDA PyTorch，若 PATH 无 ffmpeg 则下载至 `runtime\ffmpeg`，Run A 音频模型下载至 `models\audio`，预构建 llama-cpp-python 轮文件、config、BOM。GGUF 模型需手动下载（见下方）。

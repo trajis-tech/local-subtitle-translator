@@ -1,6 +1,6 @@
-# Traductor de Subtítulos Local (Modelos Portátiles, Sin Conexión)
+# Trajis SmartSRT (Modelos Portátiles, Sin Conexión)
 
-Este proyecto ejecuta una canalización de traducción de subtítulos local usando **llama-cpp-python**.
+Trajis SmartSRT ejecuta una canalización de traducción de subtítulos local usando **llama-cpp-python**.
 Está diseñado para ser **portátil**: todas las dependencias viven dentro de esta carpeta.
 
 ✅ **Offline-first**: ejecute `install.bat` (Windows) o `./install.sh` (Linux/macOS) **una vez** con red para descargar e instalar todo; luego use `start.bat` o `./start.sh` para **arranque offline** cuando quiera.
@@ -105,7 +105,7 @@ Este proyecto está pensado para **uso offline**: ejecute **install** una vez (c
 - Descarga: https://developer.nvidia.com/cuda-downloads
 - La rueda precompilada de llama-cpp-python requiere que CUDA esté instalado primero para la aceleración por GPU
 
-1. Extraiga esta carpeta en cualquier lugar (ejemplo: `G:\local-subtitle-translator`).
+1. Extraiga esta carpeta en cualquier lugar (ejemplo: `G:\Trajis SmartSRT`).
 
 2. **Instalar (una vez, con red)** — descarga e instala todo:
    - **Windows**: doble clic en `install.bat` → Python portátil, venv, todas las dependencias Python (base + audio Run A + vídeo), opcional CUDA PyTorch si hay GPU, ffmpeg en `runtime\ffmpeg` si no está en PATH, modelo de audio Run A en `models\audio`, rueda precompilada llama-cpp-python, config, BOM. Los modelos GGUF son manuales (véase abajo).
