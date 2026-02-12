@@ -1,4 +1,6 @@
-SmartSRT builds an English, language-neutral translation brief first (with audio/visual/context assistance), then generates the final subtitles and enforces a glossary at the output—so you get more consistent, controllable results than one-shot translation.
+Trajis SmartSRT (Portable, Offline Models)
+
+Trajis SmartSRT runs a local subtitle translation pipeline using llama-cpp-python. It is designed to be portable: all dependencies live inside this folder. It first builds an English, language-neutral translation brief (optionally assisted by audio/visual/context signals), then generates the final subtitles and enforces a glossary at the output—delivering more consistent, controllable results than one-shot translation.
 
 | Aspect                                          | Typical online translators (Google/DeepL-like) | Typical subtitle translators (single-pass / batch tools) | **Trajis SmartSRT**                                                                                                                  |
 | ----------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -9,12 +11,6 @@ SmartSRT builds an English, language-neutral translation brief first (with audio
 | Terminology consistency                         | Manual fixes                                   | Basic find/replace                                       | **Glossary lock:** not injected into prompts; **forced at output stage**, can be **locale-specific** (zh-TW / zh-CN / ja-JP / es-ES) |
 | Strategy for multi-model setups                 | N/A                                            | N/A                                                      | **Run F schemes** (e.g., main-led / local-led / draft-first) to mix “main” + “localization” models                                   |
 | Alignment safety                                | Not SRT-aware                                  | Often index-based → can shift                            | **sub_id + timestamps alignment** to reduce offset/shift issues                                                                      |
-
-
-# Trajis SmartSRT (Portable, Offline Models)
-
-Trajis SmartSRT runs a local subtitle translation pipeline using **llama-cpp-python**.
-It is designed to be **portable**: all dependencies live inside this folder.
 
 ✅ **Offline-first**: Run `install.bat` (Windows) or `./install.sh` (Linux/macOS) **once** with network to download and install everything; then use `start.bat` or `./start.sh` for **offline launch** anytime.
 
